@@ -33,7 +33,7 @@
   //convert string to unicode
   const CHR$ = (n) => String.fromCharCode(n);
   const PRINT = (c, color) => {
-    let size = Math.floor((Math.random() * 35)) + 10;
+    let size = Math.floor((Math.random() * 60)) + 10;
     document.body.innerHTML += `<span style="color:${color}; font-size:${size}px">${c}</span>`;
   };
   
@@ -50,6 +50,6 @@
     } else {
       PRINT(CHR$(RND()), getColor(counter));
     }
-    counter += 3;
+    counter += 5;
   }, 10);
 </script>
