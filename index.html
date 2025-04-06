@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="https://generativeart.online/css/10print.css">
+
+<body>
+</body>
+
+<script>
+  //the first box character is 9472
+  const start = 9472;
+  //the last box character is 9599
+  const end = 9559;
+
+  //generate a random box code
+  const RND = () => Math.floor(Math.random() * (end - start + 1)) + start;
+
+  //generate a shade of blue based on position
+  const getColor = (d) => {
+    const maxHeight = window.innerHeight;
+    const maxWidth = window.innerWidth;
+    // calculate entire window diagonal length
+    const maxDistance = Math.sqrt(maxHeight * maxHeight + maxWidth * maxWidth);
+
+    //determine percentage of max length
+    let position = (d / maxDistance) * 100;
+    position = Math.min(Math.max(position, 0), 100);
+    
+    //calculate color
+    const r = Math.floor(255 - (255 * (position / 100)));
+    const g = Math.floor(255 - (125 * (position / 100)));
+    const b = Math.floor(255 - (55 * (position / 100)));
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  //convert string to unicode
+  const CHR$ = (n) => String.fromCharCode(n);
+  const PRINT = (c, color) => {
+    document.body.innerHTML += `<span style="color:${color}">${c}</span>`;
+  };
+  
+  let counter = 0
+  const interval = setInterval(() => {
+    let x = Math.round(Math.random() * 10)
+
+    if (document.body.offsetHeight > window.innerHeight) {
+      clearInterval(interval);
+      return;
+    } else if (x % 2 === 0) {
+      PRINT("A", getColor(counter));
+      return;
+    } else {
+      PRINT(CHR$(RND()), getColor(counter));
+    }
+    counter += 4;
+  }, 10);
+</script>
