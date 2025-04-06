@@ -6,7 +6,7 @@
 <script>
   //an array of unicode box characters where all lines are double lined
   //const doubleLines = [9552, 9553, 9554, 9557, 9562, 9565, 9568, 9571, 9574, 9577, 9580];
-  
+
   const curved = [9581, 9582, 9583, 9584];
 
   //generate a random box code
@@ -22,7 +22,7 @@
     //determine percentage of max length
     let position = (d / maxDistance) * 100;
     position = Math.min(Math.max(position, 0), 100);
-    
+
     //calculate color
     const r = Math.floor(255 - (255 * (position / 100)));
     const g = Math.floor(255 - (125 * (position / 100)));
@@ -36,10 +36,10 @@
     let size = Math.floor((Math.random() * 55)) + 10;
     document.body.innerHTML += `<span style="color:${color}; font-size:${size}px">${c}</span>`;
   };
-  
+
   //define a counter for color variation
-  let counter = 0
-  
+  let counter = 0;
+
   //add if/else statement to setIterval
   const interval = setInterval(() => {
     let chance = Math.random();
@@ -47,7 +47,7 @@
     if (document.body.offsetHeight > window.innerHeight) {
       clearInterval(interval);
       return;
-    } else if (chance <= 0.3) {
+    } else if (chance <= 0.2) {
       PRINT("A", getColor(counter));
       return;
     } else {
